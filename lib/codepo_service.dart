@@ -8,6 +8,8 @@ import 'package:codepo_dev_tool/view/codepo_view.dart';
 import 'package:get/get.dart';
 
 class CodepoService extends GetxService {
+  static Future<CodepoService> initialize() async => Get.put(CodepoService(), permanent: true);
+
   RxList<CodepoHttpCall> calls = <CodepoHttpCall>[].obs;
 
   var isInspectorOpened = false.obs;
