@@ -5,8 +5,8 @@ import 'package:codepo_dev_tool/view/components/codepo_response_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class codepoDetailView extends StatelessWidget {
-  const codepoDetailView({super.key, required this.call});
+class CodepoDetailView extends StatelessWidget {
+  const CodepoDetailView({super.key, required this.call});
 
   final CodepoHttpCall call;
 

@@ -39,17 +39,17 @@ class CodepoHeadersWidget extends StatelessWidget {
             expanded: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                codepoRowWidget(
+                CodepoRowWidget(
                   title: "Request URL",
                   body: call.uri,
                 ),
                 const SizedBox(height: 8),
-                codepoRowWidget(
+                CodepoRowWidget(
                   title: "Request Method",
                   body: call.method,
                 ),
                 const SizedBox(height: 8),
-                codepoRowWidget(
+                CodepoRowWidget(
                   title: "Status Code",
                   body: "${call.response?.status}",
                 ),
@@ -76,7 +76,7 @@ class CodepoHeadersWidget extends StatelessWidget {
               itemCount: requestHeader.length,
               itemBuilder: (context, index) {
                 var map = requestHeader[index];
-                return codepoRowWidget(
+                return CodepoRowWidget(
                   title: map.keys.first,
                   body: map.values.first,
                 );
@@ -106,7 +106,7 @@ class CodepoHeadersWidget extends StatelessWidget {
               itemCount: responseHeader.length,
               itemBuilder: (context, index) {
                 var map = responseHeader[index];
-                return codepoRowWidget(
+                return CodepoRowWidget(
                   title: map.keys.first,
                   body: map.values.first,
                 );
@@ -137,7 +137,7 @@ class CodepoHeadersWidget extends StatelessWidget {
                 itemCount: call.request!.formDataFields!.length,
                 itemBuilder: (context, index) {
                   var map = call.request!.formDataFields![index];
-                  return codepoRowWidget(
+                  return CodepoRowWidget(
                     title: map.name,
                     body: map.value,
                   );
@@ -169,7 +169,7 @@ class CodepoHeadersWidget extends StatelessWidget {
                 itemCount: call.request!.formDataFiles!.length,
                 itemBuilder: (context, index) {
                   var map = call.request!.formDataFiles![index];
-                  return codepoRowWidget(
+                  return CodepoRowWidget(
                     title: map.fileName ?? "",
                     body: map.contentType,
                   );

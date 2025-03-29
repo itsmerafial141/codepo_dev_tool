@@ -3,8 +3,8 @@ import 'package:codepo_dev_tool/view/codepo_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class codepoView extends StatelessWidget {
-  const codepoView({super.key, required this.service});
+class CodepoView extends StatelessWidget {
+  const CodepoView({super.key, required this.service});
 
   final CodepoService service;
 
@@ -77,7 +77,7 @@ class codepoView extends StatelessWidget {
                 onTap: call.response?.status == null
                     ? null
                     : () => Get.to(
-                          () => codepoDetailView(call: call),
+                          () => CodepoDetailView(call: call),
                         ),
               );
             },

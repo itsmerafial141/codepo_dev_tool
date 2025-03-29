@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class codepoRowWidget extends StatelessWidget {
-  const codepoRowWidget({super.key, required this.title, required this.body});
+class CodepoRowWidget extends StatelessWidget {
+  const CodepoRowWidget({super.key, required this.title, required this.body});
 
   final String title;
   final String body;

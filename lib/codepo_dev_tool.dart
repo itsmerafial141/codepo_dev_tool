@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 
 import 'codepo_service.dart';
 
-class Codepo {
+export 'codepo_interceptor.dart';
+export 'codepo_service.dart';
+
+class CodepoDevTool {
   late final CodepoService _service;
 
-  Codepo() {
+  CodepoDevTool() {
     _service = Get.put(CodepoService());
   }
 

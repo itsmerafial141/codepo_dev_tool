@@ -1,14 +1,14 @@
 import 'package:codepo_dev_tool/codepo_service.dart';
 import 'package:flutter/material.dart';
 
-class codepoOverlayWidget extends StatefulWidget {
-  const codepoOverlayWidget({super.key});
+class CodepoOverlayWidget extends StatefulWidget {
+  const CodepoOverlayWidget({super.key});
 
   @override
-  codepoOverlayWidgetState createState() => codepoOverlayWidgetState();
+  CodepoOverlayWidgetState createState() => CodepoOverlayWidgetState();
 }
 
-class codepoOverlayWidgetState extends State<codepoOverlayWidget>
+class CodepoOverlayWidgetState extends State<CodepoOverlayWidget>
     with SingleTickerProviderStateMixin {
   Offset position = const Offset(100, 100); // Initial position
   late Size screenSize;

@@ -47,7 +47,7 @@ class CodepoService extends GetxService {
   Future<void> navigateToCallListScreen() async {
     if (!isInspectorOpened.value) {
       isInspectorOpened.value = true;
-      await Get.to(() => codepoView(service: this));
+      await Get.to(() => CodepoView(service: this));
       isInspectorOpened.value = false;
     }
   }
