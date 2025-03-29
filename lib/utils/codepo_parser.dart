@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 /// Body parser helper used to parsing body data.
-class RaccoonParser {
+class CodepoParser {
   static const String _jsonContentTypeSmall = 'content-type';
   static const String _jsonContentTypeBig = 'Content-Type';
   static const JsonEncoder _encoder = JsonEncoder.withIndent('  ');
@@ -33,9 +33,7 @@ class RaccoonParser {
       }
     } else if (options.data != null) {
       // Handle other data types
-      final data = options.data is Map
-          ? jsonEncode(options.data)
-          : options.data.toString();
+      final data = options.data is Map ? jsonEncode(options.data) : options.data.toString();
       curl.write(" -d '${data.replaceAll("'", "\\'")}'");
     }
 

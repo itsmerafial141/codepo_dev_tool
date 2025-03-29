@@ -1,10 +1,10 @@
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
 import 'package:flutter/material.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
 
-class RaccoonErrorWidget extends StatelessWidget {
-  const RaccoonErrorWidget({super.key, required this.call});
+class CodepoErrorWidget extends StatelessWidget {
+  const CodepoErrorWidget({super.key, required this.call});
 
-  final RaccoonHttpCall call;
+  final CodepoHttpCall call;
 
   @override
   Widget build(BuildContext context) {

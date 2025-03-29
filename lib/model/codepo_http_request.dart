@@ -1,11 +1,12 @@
 import 'dart:io' show Cookie;
+
+import 'package:codepo_dev_tool/model/codepo_form_data_field.dart';
+import 'package:codepo_dev_tool/model/codepo_http_form_data_file.dart';
 import 'package:equatable/equatable.dart';
-import 'package:raccoon/model/raccoon_form_data_field.dart';
-import 'package:raccoon/model/raccoon_http_form_data_file.dart';
 
 /// Definition of http request data holder.
-class RaccoonHttpRequest with EquatableMixin {
-  RaccoonHttpRequest({
+class CodepoHttpRequest with EquatableMixin {
+  CodepoHttpRequest({
     this.size = 0,
     DateTime? time,
     this.headers = const <String, String>{},
@@ -26,10 +27,10 @@ class RaccoonHttpRequest with EquatableMixin {
   final String curl;
   final List<Cookie> cookies;
   final Map<String, dynamic> queryParameters;
-  final List<RaccoonHttpFormDataFile>? formDataFiles;
-  final List<RaccoonFormDataField>? formDataFields;
+  final List<CodepoHttpFormDataFile>? formDataFiles;
+  final List<codepoFormDataField>? formDataFields;
 
-  RaccoonHttpRequest copyWith({
+  CodepoHttpRequest copyWith({
     int? size,
     DateTime? time,
     Map<String, String>? headers,
@@ -38,10 +39,10 @@ class RaccoonHttpRequest with EquatableMixin {
     String? curl,
     List<Cookie>? cookies,
     Map<String, dynamic>? queryParameters,
-    List<RaccoonHttpFormDataFile>? formDataFiles,
-    List<RaccoonFormDataField>? formDataFields,
+    List<CodepoHttpFormDataFile>? formDataFiles,
+    List<codepoFormDataField>? formDataFields,
   }) {
-    return RaccoonHttpRequest(
+    return CodepoHttpRequest(
       size: size ?? this.size,
       time: time ?? this.time,
       headers: headers ?? this.headers,

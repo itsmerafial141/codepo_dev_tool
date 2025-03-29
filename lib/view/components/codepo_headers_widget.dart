@@ -1,25 +1,23 @@
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
+import 'package:codepo_dev_tool/view/components/codepo_row_widget.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
-import 'package:raccoon/view/components/raccoon_row_widget.dart';
 
-class RaccoonHeadersWidget extends StatelessWidget {
-  const RaccoonHeadersWidget({
+class CodepoHeadersWidget extends StatelessWidget {
+  const CodepoHeadersWidget({
     super.key,
     required this.call,
   });
 
-  final RaccoonHttpCall call;
+  final CodepoHttpCall call;
 
   @override
   Widget build(BuildContext context) {
-    var requestHeader = call.request!.headers.entries
-        .map((entry) => {entry.key: entry.value})
-        .toList();
+    var requestHeader =
+        call.request!.headers.entries.map((entry) => {entry.key: entry.value}).toList();
 
-    var responseHeader = call.response!.headers.entries
-        .map((entry) => {entry.key: entry.value})
-        .toList();
+    var responseHeader =
+        call.response!.headers.entries.map((entry) => {entry.key: entry.value}).toList();
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -41,17 +39,17 @@ class RaccoonHeadersWidget extends StatelessWidget {
             expanded: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RaccoonRowWidget(
+                codepoRowWidget(
                   title: "Request URL",
                   body: call.uri,
                 ),
                 const SizedBox(height: 8),
-                RaccoonRowWidget(
+                codepoRowWidget(
                   title: "Request Method",
                   body: call.method,
                 ),
                 const SizedBox(height: 8),
-                RaccoonRowWidget(
+                codepoRowWidget(
                   title: "Status Code",
                   body: "${call.response?.status}",
                 ),
@@ -78,7 +76,7 @@ class RaccoonHeadersWidget extends StatelessWidget {
               itemCount: requestHeader.length,
               itemBuilder: (context, index) {
                 var map = requestHeader[index];
-                return RaccoonRowWidget(
+                return codepoRowWidget(
                   title: map.keys.first,
                   body: map.values.first,
                 );
@@ -108,7 +106,7 @@ class RaccoonHeadersWidget extends StatelessWidget {
               itemCount: responseHeader.length,
               itemBuilder: (context, index) {
                 var map = responseHeader[index];
-                return RaccoonRowWidget(
+                return codepoRowWidget(
                   title: map.keys.first,
                   body: map.values.first,
                 );
@@ -139,7 +137,7 @@ class RaccoonHeadersWidget extends StatelessWidget {
                 itemCount: call.request!.formDataFields!.length,
                 itemBuilder: (context, index) {
                   var map = call.request!.formDataFields![index];
-                  return RaccoonRowWidget(
+                  return codepoRowWidget(
                     title: map.name,
                     body: map.value,
                   );
@@ -171,7 +169,7 @@ class RaccoonHeadersWidget extends StatelessWidget {
                 itemCount: call.request!.formDataFiles!.length,
                 itemBuilder: (context, index) {
                   var map = call.request!.formDataFiles![index];
-                  return RaccoonRowWidget(
+                  return codepoRowWidget(
                     title: map.fileName ?? "",
                     body: map.contentType,
                   );

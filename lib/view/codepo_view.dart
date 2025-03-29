@@ -1,18 +1,18 @@
+import 'package:codepo_dev_tool/codepo_service.dart';
+import 'package:codepo_dev_tool/view/codepo_detail_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:raccoon/raccoon_service.dart';
-import 'package:raccoon/view/raccoon_detail_view.dart';
 
-class RaccoonView extends StatelessWidget {
-  const RaccoonView({super.key, required this.service});
+class codepoView extends StatelessWidget {
+  const codepoView({super.key, required this.service});
 
-  final RaccoonService service;
+  final CodepoService service;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Raccoon View'),
+        title: const Text('codepo View'),
         actions: [
           IconButton(
             onPressed: () {
@@ -63,8 +63,7 @@ class RaccoonView extends StatelessWidget {
                         width: 20,
                         child: CircularProgressIndicator(
                           strokeWidth: 5,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.green),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
                         ),
                       )
                     : Text(
@@ -78,7 +77,7 @@ class RaccoonView extends StatelessWidget {
                 onTap: call.response?.status == null
                     ? null
                     : () => Get.to(
-                          () => RaccoonDetailView(call: call),
+                          () => codepoDetailView(call: call),
                         ),
               );
             },

@@ -1,10 +1,10 @@
+import 'package:codepo_dev_tool/model/codepo_http_error.dart';
+import 'package:codepo_dev_tool/model/codepo_http_request.dart';
+import 'package:codepo_dev_tool/model/codepo_http_response.dart';
 import 'package:equatable/equatable.dart';
-import 'package:raccoon/model/raccoon_http_error.dart';
-import 'package:raccoon/model/raccoon_http_request.dart';
-import 'package:raccoon/model/raccoon_http_response.dart';
 
-class RaccoonHttpCall with EquatableMixin {
-  RaccoonHttpCall({
+class CodepoHttpCall with EquatableMixin {
+  CodepoHttpCall({
     required this.id,
     this.request,
     this.response,
@@ -31,11 +31,11 @@ class RaccoonHttpCall with EquatableMixin {
   final String uri;
   final int duration;
 
-  final RaccoonHttpRequest? request;
-  final RaccoonHttpResponse? response;
-  final RaccoonHttpError? error;
+  final CodepoHttpRequest? request;
+  final CodepoHttpResponse? response;
+  final CodepoHttpError? error;
 
-  RaccoonHttpCall copyWith({
+  CodepoHttpCall copyWith({
     int? id,
     DateTime? createdTime,
     String? client,
@@ -46,11 +46,11 @@ class RaccoonHttpCall with EquatableMixin {
     String? server,
     String? uri,
     int? duration,
-    RaccoonHttpRequest? request,
-    RaccoonHttpResponse? response,
-    RaccoonHttpError? error,
+    CodepoHttpRequest? request,
+    CodepoHttpResponse? response,
+    CodepoHttpError? error,
   }) {
-    return RaccoonHttpCall(
+    return CodepoHttpCall(
       id: id ?? this.id,
       createdTime: createdTime ?? this.createdTime,
       client: client ?? this.client,

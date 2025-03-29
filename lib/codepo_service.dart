@@ -1,21 +1,21 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
+import 'package:codepo_dev_tool/model/codepo_http_error.dart';
+import 'package:codepo_dev_tool/model/codepo_http_response.dart';
+import 'package:codepo_dev_tool/view/codepo_view.dart';
 import 'package:get/get.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
-import 'package:raccoon/model/raccoon_http_error.dart';
-import 'package:raccoon/model/raccoon_http_response.dart';
-import 'package:raccoon/view/raccoon_view.dart';
 
-class RaccoonService extends GetxService {
-  RxList<RaccoonHttpCall> calls = <RaccoonHttpCall>[].obs;
+class CodepoService extends GetxService {
+  RxList<CodepoHttpCall> calls = <CodepoHttpCall>[].obs;
 
   var isInspectorOpened = false.obs;
 
-  void addCall(RaccoonHttpCall call) => calls.add(call);
+  void addCall(CodepoHttpCall call) => calls.add(call);
 
   /// Add response to existing alice http call
-  FutureOr<void> addResponse(RaccoonHttpResponse res, int requestId) async {
+  FutureOr<void> addResponse(CodepoHttpResponse res, int requestId) async {
     final index = calls.indexWhere((call) => call.id == requestId);
 
     if (index != -1) {
@@ -29,7 +29,7 @@ class RaccoonService extends GetxService {
   }
 
   /// Add error to existing alice http call
-  FutureOr<void> addError(RaccoonHttpError error, int requestId) async {
+  FutureOr<void> addError(CodepoHttpError error, int requestId) async {
     final index = calls.indexWhere((call) => call.id == requestId);
 
     if (index != -1) {
@@ -45,7 +45,7 @@ class RaccoonService extends GetxService {
   Future<void> navigateToCallListScreen() async {
     if (!isInspectorOpened.value) {
       isInspectorOpened.value = true;
-      await Get.to(() => RaccoonView(service: this));
+      await Get.to(() => codepoView(service: this));
       isInspectorOpened.value = false;
     }
   }

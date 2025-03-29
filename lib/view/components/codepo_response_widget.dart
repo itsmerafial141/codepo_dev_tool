@@ -1,11 +1,11 @@
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
+import 'package:codepo_dev_tool/utils/codepo_parser.dart';
 import 'package:flutter/material.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
-import 'package:raccoon/utils/raccoon_parser.dart';
 
-class RaccoonResponseWidget extends StatelessWidget {
-  const RaccoonResponseWidget({super.key, required this.call});
+class CodepoResponseWidget extends StatelessWidget {
+  const CodepoResponseWidget({super.key, required this.call});
 
-  final RaccoonHttpCall call;
+  final CodepoHttpCall call;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RaccoonResponseWidget extends StatelessWidget {
       child: SelectableText(
         (call.response?.body is String)
             ? call.response?.body
-            : RaccoonParser.formatJson(call.response?.body),
+            : CodepoParser.formatJson(call.response?.body),
       ),
     );
   }

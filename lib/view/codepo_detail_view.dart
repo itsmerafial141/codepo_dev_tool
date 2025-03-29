@@ -1,14 +1,14 @@
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
+import 'package:codepo_dev_tool/view/components/codepo_error_widget.dart';
+import 'package:codepo_dev_tool/view/components/codepo_headers_widget.dart';
+import 'package:codepo_dev_tool/view/components/codepo_response_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
-import 'package:raccoon/view/components/raccoon_error_widget.dart';
-import 'package:raccoon/view/components/raccoon_headers_widget.dart';
-import 'package:raccoon/view/components/raccoon_response_widget.dart';
 
-class RaccoonDetailView extends StatelessWidget {
-  const RaccoonDetailView({super.key, required this.call});
+class codepoDetailView extends StatelessWidget {
+  const codepoDetailView({super.key, required this.call});
 
-  final RaccoonHttpCall call;
+  final CodepoHttpCall call;
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +41,9 @@ class RaccoonDetailView extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            RaccoonHeadersWidget(call: call),
-            RaccoonResponseWidget(call: call),
-            RaccoonErrorWidget(call: call),
+            CodepoHeadersWidget(call: call),
+            CodepoResponseWidget(call: call),
+            CodepoErrorWidget(call: call),
           ],
         ),
       ),

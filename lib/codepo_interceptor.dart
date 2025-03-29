@@ -1,21 +1,21 @@
 import 'dart:convert';
 
+import 'package:codepo_dev_tool/codepo_adapter.dart';
+import 'package:codepo_dev_tool/model/codepo_form_data_field.dart';
+import 'package:codepo_dev_tool/model/codepo_http_call.dart';
+import 'package:codepo_dev_tool/model/codepo_http_error.dart';
+import 'package:codepo_dev_tool/model/codepo_http_form_data_file.dart';
+import 'package:codepo_dev_tool/model/codepo_http_request.dart';
+import 'package:codepo_dev_tool/model/codepo_http_response.dart';
+import 'package:codepo_dev_tool/utils/codepo_parser.dart';
 import 'package:dio/dio.dart';
-import 'package:raccoon/model/raccoon_form_data_field.dart';
-import 'package:raccoon/model/raccoon_http_call.dart';
-import 'package:raccoon/model/raccoon_http_error.dart';
-import 'package:raccoon/model/raccoon_http_form_data_file.dart';
-import 'package:raccoon/model/raccoon_http_request.dart';
-import 'package:raccoon/model/raccoon_http_response.dart';
-import 'package:raccoon/raccoon_adapter.dart';
-import 'package:raccoon/utils/raccoon_parser.dart';
 
-class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
+class CodepoInterceptor extends InterceptorsWrapper with codepoAdapter {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     try {
-      final call = RaccoonHttpCall(id: options.hashCode);
-      var request = RaccoonHttpRequest();
+      final call = CodepoHttpCall(id: options.hashCode);
+      var request = CodepoHttpRequest();
 
       final uri = options.uri;
 
@@ -34,19 +34,19 @@ class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
           request = request.copyWith(body: "Form Data");
 
           if (data.fields.isNotEmpty == true) {
-            final fields = <RaccoonFormDataField>[];
+            final fields = <codepoFormDataField>[];
             for (var entry in data.fields) {
-              fields.add(RaccoonFormDataField(entry.key, entry.value));
+              fields.add(codepoFormDataField(entry.key, entry.value));
             }
 
             request = request.copyWith(formDataFields: fields);
           }
 
           if (data.files.isNotEmpty == true) {
-            final files = <RaccoonHttpFormDataFile>[];
+            final files = <CodepoHttpFormDataFile>[];
             for (var entry in data.files) {
               files.add(
-                RaccoonHttpFormDataFile(
+                CodepoHttpFormDataFile(
                   entry.value.filename,
                   entry.value.contentType.toString(),
                   entry.value.length,
@@ -66,10 +66,10 @@ class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
 
       request = request.copyWith(
         time: DateTime.now(),
-        headers: RaccoonParser.parseHeaders(headers: options.headers),
+        headers: CodepoParser.parseHeaders(headers: options.headers),
         contentType: options.contentType.toString(),
         queryParameters: uri.queryParameters,
-        curl: RaccoonParser.generateCurlCommand(options),
+        curl: CodepoParser.generateCurlCommand(options),
       );
 
       var seed = call.copyWith(
@@ -93,7 +93,7 @@ class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     try {
-      var httpResponse = RaccoonHttpResponse();
+      var httpResponse = CodepoHttpResponse();
 
       if (response.data == null) {
         httpResponse = httpResponse.copyWith(
@@ -129,7 +129,7 @@ class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    var httpError = RaccoonHttpError(
+    var httpError = CodepoHttpError(
       error: err.toString(),
     );
 
@@ -142,7 +142,7 @@ class RaccoonInterceptor extends InterceptorsWrapper with RaccoonAdapter {
 
     service.addError(httpError, err.requestOptions.hashCode);
 
-    var httpResponse = RaccoonHttpResponse(
+    var httpResponse = CodepoHttpResponse(
       time: DateTime.now(),
     );
 

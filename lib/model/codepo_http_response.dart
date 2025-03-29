@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-class RaccoonHttpResponse with EquatableMixin {
-  RaccoonHttpResponse({
+class CodepoHttpResponse with EquatableMixin {
+  CodepoHttpResponse({
     this.status = 0,
     this.size = 0,
     DateTime? time,
@@ -15,14 +15,14 @@ class RaccoonHttpResponse with EquatableMixin {
   final dynamic body;
   final Map<String, String> headers;
 
-  RaccoonHttpResponse copyWith({
+  CodepoHttpResponse copyWith({
     int? status,
     int? size,
     DateTime? time,
     dynamic body,
     Map<String, String>? headers,
   }) {
-    return RaccoonHttpResponse(
+    return CodepoHttpResponse(
       status: status ?? this.status,
       size: size ?? this.size,
       time: time ?? this.time,

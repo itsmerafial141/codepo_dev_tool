@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class RaccoonConfiguration with EquatableMixin {
+class CodepoConfiguration with EquatableMixin {
   final GlobalKey<NavigatorState>? navigatorKey;
 
-  RaccoonConfiguration({
+  CodepoConfiguration({
     GlobalKey<NavigatorState>? navigatorKey,
   }) : navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
 
-  RaccoonConfiguration copyWith({
+  CodepoConfiguration copyWith({
     GlobalKey<NavigatorState>? navigatorKey,
   }) {
-    return RaccoonConfiguration(
+    return CodepoConfiguration(
       navigatorKey: navigatorKey ?? this.navigatorKey,
     );
   }

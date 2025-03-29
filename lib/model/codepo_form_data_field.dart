@@ -1,6 +1,6 @@
 /// Definition of form data field.
-class RaccoonFormDataField {
-  const RaccoonFormDataField(
+class codepoFormDataField {
+  const codepoFormDataField(
     this.name,
     this.value,
   );

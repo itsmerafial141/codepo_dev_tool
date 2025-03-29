@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 /// Definition of http error data holder.
-class RaccoonHttpError with EquatableMixin {
-  RaccoonHttpError({
+class CodepoHttpError with EquatableMixin {
+  CodepoHttpError({
     this.error,
     this.stackTrace,
   });
@@ -10,11 +10,11 @@ class RaccoonHttpError with EquatableMixin {
   final dynamic error;
   final StackTrace? stackTrace;
 
-  RaccoonHttpError copyWith({
+  CodepoHttpError copyWith({
     dynamic error,
     StackTrace? stackTrace,
   }) {
-    return RaccoonHttpError(
+    return CodepoHttpError(
       error: error ?? this.error,
       stackTrace: stackTrace ?? this.stackTrace,
     );
